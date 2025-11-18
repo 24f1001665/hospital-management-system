@@ -1,0 +1,97 @@
+Hospital Management System
+
+A web application that streamlines hospital operations by managing patients, doctors, appointments, and related records digitally. It helps improve efficiency and reduce manual work for administrators, doctors and patients.
+
+🧱 Features
+
+User roles: Admin, Doctor, Patient
+
+Admin dashboard: Manage users, doctors, patients, appointments
+
+Doctor dashboard: View upcoming appointments, view patient history
+
+Patient view: Browse & search doctors by name or department, Book appointments
+
+Database models for Users, Departments, Appointments, Treatments, DoctorAvailability
+
+Secure password hashing using werkzeug.security
+
+Timestamps stored in UTC for consistency
+
+🛠 Technology & Stack
+
+Python 3.x
+
+Flask (Web framework)
+
+Flask‑SQLAlchemy (ORM)
+
+SQL database (e.g., SQLite, PostgreSQL)
+
+HTML templates for front end (with Flask render_template)
+
+Password hashing via werkzeug.security.generate_password_hash / check_password_hash
+
+📁 Project Structure
+/instance/             # Config files, environment variables  
+/templates/            # HTML template files  
+app.py                 # Main Flask application  
+models.py              # ORM models for Users, Departments, Appointments, Treatments, DoctorAvailability  
+requirements.txt       # Python dependencies  
+
+🔧 Getting Started
+Prerequisites
+
+Python 3.x installed
+
+Virtual environment recommended
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/24f1001665/hospital-management-system.git
+cd hospital-management-system
+
+
+
+Create and activate a virtual environment:
+
+python3 -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Initialize the database (example):
+
+python app.py   # The `init_db()` call will create tables
+
+Start the server:
+
+python app.py
+
+Open your browser at http://localhost:5000
+
+✅ Usage / Workflow
+
+Admin logs in → can add/edit doctors & departments
+
+Patient logs in → browses doctors (by name or department) → books an appointment
+
+Doctor logs in → sees upcoming appointments (next 7 days) → clicks patient → views their appointment history & treatments
+
+🛡 Security & Best Practices
+
+Passwords are stored hashed (never plain text)
+
+Timestamps stored in UTC (datetime.utcnow())
+
+Use @role_required(...) decorators to enforce role-based access
+
+Important: For production, set FLASK_DEBUG=False and use a production-ready web server
+
+Use environment variables (not hard-coded) for secret keys, database URLs
